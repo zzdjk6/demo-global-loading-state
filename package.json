@@ -18,7 +18,7 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "redux-thunk-routine": "^1.0.2",
+    "redux-thunk-routine": "^1.0.4",
     "reselect": "^4.0.0",
     "typescript": "3.7.2"
   },
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/reactstrap": "^8.0.6",
     "@types/redux-actions": "^2.6.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "browserslist": {
     "production": [

@@ -1,50 +1,37 @@
-import { Action } from "redux-actions";
-import { createThunkRoutine } from "redux-thunk-routine";
-import { Dispatch } from "redux";
+import { Action } from 'redux-actions';
+import { createThunkRoutine, ReduxThunkRoutine, dispatchRoutine } from 'redux-thunk-routine';
+import { Dispatch } from 'redux';
 
 // State
 type State = {};
 
 // Routines
-export const routine1 = createThunkRoutine<number, Error>("DEMO_ROUTINE1");
-export const routine2 = createThunkRoutine<number, Error>("DEMO_ROUTINE2");
-export const routine3 = createThunkRoutine<number, Error>("DEMO_ROUTINE3");
+export const routine1 = createThunkRoutine<number>('DEMO_ROUTINE1');
+export const routine2 = createThunkRoutine<number>('DEMO_ROUTINE2');
+export const routine3 = createThunkRoutine<number>('DEMO_ROUTINE3');
+
+const wait = (ms: number) => new Promise(resolve => setTimeout(() => resolve(), ms));
 
 // Actions
 export const fetchData1 = () => async (dispatch: Dispatch) => {
-  dispatch(routine1.request());
-  try {
-    setTimeout(() => {
-      dispatch(routine1.success(1));
-    }, 1000);
-  } catch (e) {
-    dispatch(routine1.failure(e));
-    throw e;
-  }
+  return await dispatchRoutine(dispatch, routine1, async () => {
+    await wait(1000);
+    return 1;
+  });
 };
 
 export const fetchData2 = () => async (dispatch: Dispatch) => {
-  dispatch(routine2.request());
-  try {
-    setTimeout(() => {
-      dispatch(routine2.success(2));
-    }, 2000);
-  } catch (e) {
-    dispatch(routine2.failure(e));
-    throw e;
-  }
+  return await dispatchRoutine(dispatch, routine2, async () => {
+    await wait(2000);
+    return 2;
+  });
 };
 
 export const fetchData3 = () => async (dispatch: Dispatch) => {
-  dispatch(routine3.request());
-  try {
-    setTimeout(() => {
-      dispatch(routine3.success(3));
-    }, 3000);
-  } catch (e) {
-    dispatch(routine3.failure(e));
-    throw e;
-  }
+  return await dispatchRoutine(dispatch, routine3, async () => {
+    await wait(3000);
+    return 3;
+  });
 };
 
 // Reducer
