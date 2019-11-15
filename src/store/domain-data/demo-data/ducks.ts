@@ -1,6 +1,6 @@
-import { Action } from 'redux-actions';
-import { createThunkRoutine, ReduxThunkRoutine, dispatchRoutine } from 'redux-thunk-routine';
 import { Dispatch } from 'redux';
+import { Action } from 'redux-actions';
+import { createThunkRoutine, dispatchRoutine } from 'redux-thunk-routine';
 
 // State
 type State = {};
