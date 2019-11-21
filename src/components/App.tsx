@@ -11,15 +11,15 @@ const App: React.FC = () => {
 
   // Select loading
   const isAnyLoading = useSelector((state: RootState) => selectAnyLoading(state));
-  const isLoading1 = useSelector((state: RootState) => selectLoading(routine1.actionType)(state));
+  const isLoading1 = useSelector((state: RootState) => selectLoading(routine1.routineType)(state));
   const isLoading1and2 = useSelector((state: RootState) =>
-    selectSomeLoading([routine1.actionType, routine2.actionType])(state)
+    selectSomeLoading([routine1.routineType, routine2.routineType])(state)
   );
 
   // Select error
-  const error1 = useSelector((state: RootState) => selectError(routine1.actionType)(state));
-  const error2 = useSelector((state: RootState) => selectError(routine2.actionType)(state));
-  const error3 = useSelector((state: RootState) => selectError(routine3.actionType)(state));
+  const error1 = useSelector((state: RootState) => selectError(routine1.routineType)(state));
+  const error2 = useSelector((state: RootState) => selectError(routine2.routineType)(state));
+  const error3 = useSelector((state: RootState) => selectError(routine3.routineType)(state));
 
   const [makeError, setMakeError] = useState(false);
 
