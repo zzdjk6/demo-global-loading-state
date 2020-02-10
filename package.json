@@ -11,7 +11,7 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "redux-thunk-routine": "^1.0.5",
+    "redux-thunk-routine": "git://github.com/zzdjk6/redux-thunk-routine.git#05fde303b8629cd2249c56e2ff92ad4c7514f705",
     "reselect": "^4.0.0",
     "react-scripts": "3.2.0"
   },
