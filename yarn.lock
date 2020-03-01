@@ -8394,10 +8394,10 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-thunk-routine@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/redux-thunk-routine/-/redux-thunk-routine-1.0.6.tgz#c2adcbf121f4fdaebdcd54ea711d2476ca0c296b"
-  integrity sha512-tOAPwEcKKo9cWCPUpyAwO2nTmrJFF2ail7KEYsVoTnj8XC5O99qBimi+w1Ew4MVmfljUUBT8YbQbsyHQT1+s6A==
+redux-thunk-routine@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/redux-thunk-routine/-/redux-thunk-routine-1.0.7.tgz#92751a3ea0369626151d434ee7d81b91b2af2231"
+  integrity sha512-Qw+612xAermgCZgdIUEx9i0CCPOEMXQKEmU1dH28FubpwuVJlUnm37R5vjdFNjzsLdtuyYWAGtm9EaunklEwVw==
   dependencies:
     redux-actions "^2.6.5"
 

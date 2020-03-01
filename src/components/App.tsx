@@ -12,7 +12,7 @@ const App: React.FC = () => {
   // Select loading
   const isAnyLoading = useSelector((state: RootState) => selectAnyLoading(state));
   const isLoading1 = useSelector((state: RootState) => selectLoading(routine1.routineType)(state));
-  const isLoading1and2 = useSelector((state: RootState) =>
+  const isLoading1or2 = useSelector((state: RootState) =>
     selectSomeLoading([routine1.routineType, routine2.routineType])(state)
   );
 
@@ -70,9 +70,9 @@ const App: React.FC = () => {
             <Spinner color="secondary" /> Loading routine 1...
           </div>
         )}
-        {isLoading1and2 && (
+        {isLoading1or2 && (
           <div className="w-100">
-            <Spinner color="info" /> Loading routine 1 and 2...
+            <Spinner color="info" /> Loading routine 1 or 2...
           </div>
         )}
       </div>
