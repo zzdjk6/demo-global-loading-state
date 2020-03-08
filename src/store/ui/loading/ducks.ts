@@ -2,7 +2,6 @@
 
 import { Action } from 'redux-actions';
 import { RootState } from '../../store';
-import { createSelector } from 'reselect';
 
 // State
 

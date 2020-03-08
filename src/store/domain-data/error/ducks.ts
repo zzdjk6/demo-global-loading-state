@@ -2,7 +2,6 @@
 
 import { Action } from 'redux-actions';
 import { RootState } from '../../store';
-import { createSelector } from 'reselect';
 
 // State
 
@@ -36,8 +35,6 @@ export default (state: ErrorState = {}, action: Action<any>): ErrorState => {
 export const selectErrorState = (state: RootState) => state.domainData.error;
 
 // Select error for a given routine
-export const selectError = (routineType: string) => {
-  return createSelector([selectErrorState], (state: ErrorState) => {
-    return state[routineType];
-  });
+export const selectError = (routineType: string) => (state: RootState) => {
+  return state.domainData.error[routineType];
 };

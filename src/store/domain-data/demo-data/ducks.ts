@@ -1,39 +1,30 @@
-import { Action } from "redux-actions";
-import { createThunkRoutine, getThunkActionCreator } from "redux-thunk-routine";
+import { Action } from 'redux-actions';
+import { createThunkRoutine, getThunkActionCreator } from 'redux-thunk-routine';
 
 // State
 type State = {};
 
 // Routines
-export const routine1 = createThunkRoutine<number>('DEMO_ROUTINE1');
-export const routine2 = createThunkRoutine<number>('DEMO_ROUTINE2');
-export const routine3 = createThunkRoutine<number>('DEMO_ROUTINE3');
+export const routineA = createThunkRoutine<number>('DATA/A/FETCH');
+export const routineB = createThunkRoutine<number>('DATA/B/FETCH');
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(() => resolve(), ms));
 
 // Thunks
-export const fetchData1 = getThunkActionCreator(routine1, async (makeError: boolean = false) => {
-  await wait(1000);
+export const fetchDataA = getThunkActionCreator(routineA, async (makeError: boolean = false) => {
+  await wait(1500);
   if (makeError) {
-    throw new Error('Fetch Data1 Error!');
+    throw new Error('Fetch Data A Error!');
   }
   return 1;
 });
 
-export const fetchData2 = getThunkActionCreator(routine2, async (makeError: boolean = false) => {
-  await wait(2000);
-  if (makeError) {
-    throw new Error('Fetch Data2 Error!');
-  }
-  return 2;
-});
-
-export const fetchData3 = getThunkActionCreator(routine3, async (makeError: boolean = false) => {
+export const fetchDataB = getThunkActionCreator(routineB, async (makeError: boolean = false) => {
   await wait(3000);
   if (makeError) {
-    throw new Error('Fetch Data3 Error!');
+    throw new Error('Fetch Data B Error!');
   }
-  return 3;
+  return 2;
 });
 
 // Reducer
