@@ -35,20 +35,14 @@ export default (state: LoadingState = {}, action: Action<any>): LoadingState => 
 export const selectLoadingState = (state: RootState) => state.ui.loading;
 
 // Select whether a given routine is loading
-export const selectLoading = (routineType: string) => {
-  return createSelector([selectLoadingState], (state: LoadingState) => {
-    return !!state[routineType];
-  });
+export const selectLoading = (routineType: string) => (state: RootState) => {
+  return Boolean(state.ui.loading[routineType]);
 };
 
 // Select whether any routine is loading
-export const selectAnyLoading = createSelector([selectLoadingState], (state: LoadingState) => {
-  return Object.values(state).some(val => val);
-});
+export const selectAnyLoading = (state: RootState) => Object.values(state.ui.loading).some(Boolean);
 
-// Select whether a given set of routines are loading
-export const selectSomeLoading = (routineTypes: Array<string>) => {
-  return createSelector([selectLoadingState], (state: LoadingState) => {
-    return routineTypes.some(routineType => state[routineType]);
-  });
+// Select whether any of a given set of routines is loading
+export const selectSomeLoading = (routineTypes: string[]) => (state: RootState) => {
+  return routineTypes.some(routineType => Boolean(state.ui.loading[routineType]));
 };
