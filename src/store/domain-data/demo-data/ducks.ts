@@ -5,9 +5,9 @@ import { createThunkRoutine, getThunkActionCreator } from 'redux-thunk-routine';
 type State = {};
 
 // Routines
-export const routineA = createThunkRoutine<number>('DATA/A/FETCH');
-export const routineB = createThunkRoutine<number>('DATA/B/FETCH');
-export const routineC = createThunkRoutine<number>('DATA/C/FETCH');
+export const routineA = createThunkRoutine<number>('FETCH_DATA_A');
+export const routineB = createThunkRoutine<number>('FETCH_DATA_B');
+export const routineC = createThunkRoutine<number>('FETCH_DATA_C');
 
 const wait = (ms: number) => new Promise(resolve => setTimeout(() => resolve(), ms));
 
@@ -23,7 +23,7 @@ const fakeFetchData = async (args: { makeError: boolean; waitSeconds: number; na
 export const fetchDataA = getThunkActionCreator(routineA, async (makeError: boolean = false) => {
   return fakeFetchData({
     makeError,
-    waitSeconds: 1.5,
+    waitSeconds: 1,
     name: 'A'
   });
 });
@@ -31,7 +31,7 @@ export const fetchDataA = getThunkActionCreator(routineA, async (makeError: bool
 export const fetchDataB = getThunkActionCreator(routineB, async (makeError: boolean = false) => {
   return fakeFetchData({
     makeError,
-    waitSeconds: 1.5,
+    waitSeconds: 1,
     name: 'B'
   });
 });
@@ -39,7 +39,7 @@ export const fetchDataB = getThunkActionCreator(routineB, async (makeError: bool
 export const fetchDataC = getThunkActionCreator(routineC, async (makeError: boolean = false) => {
   return fakeFetchData({
     makeError,
-    waitSeconds: 1.5,
+    waitSeconds: 1,
     name: 'C'
   });
 });

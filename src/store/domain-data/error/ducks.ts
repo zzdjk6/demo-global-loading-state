@@ -25,7 +25,10 @@ export default (state: ErrorState = {}, action: Action<any>): ErrorState => {
     ...state,
     // Set error state to the payload only when the status is "FAILURE"
     //    Otherwise set the error state to null
-    [routineType]: status === 'FAILURE' ? action.payload : null
+    [routineType]: status === 'FAILURE' ? {
+      name: action.payload.name,
+      message: action.payload.message
+    } : null
   };
 };
 
