@@ -13,7 +13,9 @@ The demo is very simple.
 There are 3 buttons in the first card to simulate loading data from different sources.
 
 > Click A (This is loading A)
+
 > Click B (This is loading B)
+
 > Click C (And this is loading C)
 
 While data is loading, spinners will show up in the second card.
@@ -43,7 +45,9 @@ So it is fine to start loading them at the same time.
 We can have a look at the structure of states in redux-dev-tools.
 
 > Click the last action, and expend the States > Raw
+
 > Select loading state (This is the loading state)
+
 > Select error state (And this is the error state)
 
 That's it.
