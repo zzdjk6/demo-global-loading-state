@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/demo-global-loading-state/build/static/js/main.f15570fe.chunk.js",
-    "main.js.map": "/demo-global-loading-state/build/static/js/main.f15570fe.chunk.js.map",
-    "runtime-main.js": "/demo-global-loading-state/build/static/js/runtime-main.0a40f183.js",
-    "runtime-main.js.map": "/demo-global-loading-state/build/static/js/runtime-main.0a40f183.js.map",
-    "static/css/2.21dd05ca.chunk.css": "/demo-global-loading-state/build/static/css/2.21dd05ca.chunk.css",
-    "static/js/2.0b191970.chunk.js": "/demo-global-loading-state/build/static/js/2.0b191970.chunk.js",
-    "static/js/2.0b191970.chunk.js.map": "/demo-global-loading-state/build/static/js/2.0b191970.chunk.js.map",
+    "main.js": "/demo-global-loading-state/build/static/js/main.f816c1ea.chunk.js",
+    "main.js.map": "/demo-global-loading-state/build/static/js/main.f816c1ea.chunk.js.map",
+    "runtime-main.js": "/demo-global-loading-state/build/static/js/runtime-main.c914d606.js",
+    "runtime-main.js.map": "/demo-global-loading-state/build/static/js/runtime-main.c914d606.js.map",
+    "static/css/2.de424728.chunk.css": "/demo-global-loading-state/build/static/css/2.de424728.chunk.css",
+    "static/js/2.c8c51cd2.chunk.js": "/demo-global-loading-state/build/static/js/2.c8c51cd2.chunk.js",
+    "static/js/2.c8c51cd2.chunk.js.map": "/demo-global-loading-state/build/static/js/2.c8c51cd2.chunk.js.map",
     "index.html": "/demo-global-loading-state/build/index.html",
-    "precache-manifest.8a08c8cfad18cef845b5c2f8e90370b3.js": "/demo-global-loading-state/build/precache-manifest.8a08c8cfad18cef845b5c2f8e90370b3.js",
+    "precache-manifest.2ea22a8ed17876c4f83f56b31ef6d95e.js": "/demo-global-loading-state/build/precache-manifest.2ea22a8ed17876c4f83f56b31ef6d95e.js",
     "service-worker.js": "/demo-global-loading-state/build/service-worker.js",
-    "static/css/2.21dd05ca.chunk.css.map": "/demo-global-loading-state/build/static/css/2.21dd05ca.chunk.css.map",
-    "static/js/2.0b191970.chunk.js.LICENSE.txt": "/demo-global-loading-state/build/static/js/2.0b191970.chunk.js.LICENSE.txt"
+    "static/css/2.de424728.chunk.css.map": "/demo-global-loading-state/build/static/css/2.de424728.chunk.css.map",
+    "static/js/2.c8c51cd2.chunk.js.LICENSE.txt": "/demo-global-loading-state/build/static/js/2.c8c51cd2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0a40f183.js",
-    "static/css/2.21dd05ca.chunk.css",
-    "static/js/2.0b191970.chunk.js",
-    "static/js/main.f15570fe.chunk.js"
+    "static/js/runtime-main.c914d606.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.c8c51cd2.chunk.js",
+    "static/js/main.f816c1ea.chunk.js"
   ]
 }

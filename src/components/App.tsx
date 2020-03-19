@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { Button, Card, CardBody, CardHeader, Spinner, Table } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataA, fetchDataB, fetchDataC, routineA, routineB, routineC } from '../store/domain-data/demo-data/ducks';
 import { selectAnyLoading, selectLoading, selectSomeLoading } from '../store/ui/loading/ducks';
 import { selectError } from '../store/domain-data/error/ducks';
+import { Abortable, AbortablePromise } from 'simple-abortable-promise';
 
 const App: React.FC = () => {
   const dispatch = useDispatch<any>();
@@ -20,12 +21,65 @@ const App: React.FC = () => {
   const errorB = useSelector(selectError(routineB.routineType));
   const errorC = useSelector(selectError(routineC.routineType));
 
+  // States
   const [makeError, setMakeError] = useState(false);
+  const [abortables, setAbortables] = useState<Abortable[]>([]);
+
+  // Util functions to manipulate states
+  const addAbortable = useCallback(
+    (abortable: Abortable) => {
+      setAbortables([...abortables, abortable]);
+    },
+    [abortables, setAbortables]
+  );
+  const delAbortable = useCallback(
+    (abortable: Abortable) => {
+      setAbortables(abortables.filter(item => item !== abortable));
+    },
+    [abortables, setAbortables]
+  );
+  const execPromise = useCallback(
+    async (promise: AbortablePromise<any>) => {
+      try {
+        addAbortable(promise);
+        await promise;
+      } catch (e) {
+        logError(e);
+      } finally {
+        delAbortable(promise);
+      }
+    },
+    [addAbortable, delAbortable]
+  );
+
+  // Handle button click
+  const handleClickLoadA = useCallback(async () => {
+    const promise = dispatch(fetchDataA(makeError));
+    await execPromise(promise);
+  }, [dispatch, makeError, execPromise]);
+  const handleClickLoadB = useCallback(async () => {
+    const promise = dispatch(fetchDataB(makeError));
+    await execPromise(promise);
+  }, [dispatch, makeError, execPromise]);
+  const handleClickLoadC = useCallback(async () => {
+    const promise = dispatch(fetchDataC(makeError));
+    await execPromise(promise);
+  }, [dispatch, makeError, execPromise]);
+  const handleClickAbort = useCallback(() => {
+    abortables.forEach(abortable => abortable.abort());
+  }, [abortables]);
 
   return (
     <div className="container-fluid pt-3">
       <Card className="mb-3">
-        <CardHeader>Fetch Data</CardHeader>
+        <CardHeader>
+          <div className="d-flex justify-content-between">
+            <span>Fetch Data</span>
+            <Button outline color="warning" className="py-0" onClick={handleClickAbort}>
+              Abort
+            </Button>
+          </div>
+        </CardHeader>
         <CardBody className="pb-1">
           <div className="form-check mb-3">
             <label className="form-check-label">
@@ -47,7 +101,7 @@ const App: React.FC = () => {
                 className="w-100 mb-3"
                 color={makeError ? 'danger' : 'secondary'}
                 outline={true}
-                onClick={() => dispatch(fetchDataA(makeError)).catch(console.error)}
+                onClick={handleClickLoadA}
               >
                 A
               </Button>
@@ -57,7 +111,7 @@ const App: React.FC = () => {
                 className="w-100 mb-3"
                 color={makeError ? 'danger' : 'secondary'}
                 outline={true}
-                onClick={() => dispatch(fetchDataB(makeError)).catch(console.error)}
+                onClick={handleClickLoadB}
               >
                 B
               </Button>
@@ -67,7 +121,7 @@ const App: React.FC = () => {
                 className="w-100 mb-3"
                 color={makeError ? 'danger' : 'secondary'}
                 outline={true}
-                onClick={() => dispatch(fetchDataC(makeError)).catch(console.error)}
+                onClick={handleClickLoadC}
               >
                 C
               </Button>
@@ -137,6 +191,14 @@ const App: React.FC = () => {
       </Card>
     </div>
   );
+};
+
+const logError = (e: Error) => {
+  if (e.name === 'AbortError') {
+    console.warn(e.message);
+  } else {
+    console.error(e);
+  }
 };
 
 export default App;
